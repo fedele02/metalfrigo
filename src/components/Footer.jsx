@@ -1,0 +1,104 @@
+import { Link } from 'react-router-dom'
+import { Snowflake, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
+
+export default function Footer() {
+  return (
+    <footer className="relative border-t border-white/5">
+      {/* Gradient line at top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="flex items-center group mb-5">
+              <img 
+                src="/logo.png" 
+                alt="Metalfrigo" 
+                className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+              />
+            </Link>
+            <p className="text-dark-300 leading-relaxed max-w-md mb-6">
+              Specialisti nella progettazione di arredamenti industriali e soluzioni di refrigerazione 
+              per il settore professionale. Qualità artigianale e innovazione tecnologica Made in Puglia.
+            </p>
+            <div className="flex gap-3">
+              {['LinkedIn', 'Facebook', 'Instagram'].map((social) => (
+                <a
+                  key={social}
+                  href="#"
+                  className="w-10 h-10 rounded-xl glass-light flex items-center justify-center text-dark-300 hover:text-primary-400 hover:bg-frost-200 transition-all duration-300"
+                  aria-label={social}
+                >
+                  <span className="text-xs font-bold">{social[0]}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
+              Navigazione
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'Prodotti', path: '/prodotti' },
+                { name: 'Chi Siamo', path: '/#chi-siamo' },
+                { name: 'Contatti', path: '/#contatti' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="group flex items-center gap-2 text-dark-300 hover:text-primary-400 transition-colors duration-300"
+                  >
+                    <span>{link.name}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
+              Contatti
+            </h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-dark-300">
+                <MapPin className="w-4 h-4 text-primary-500 mt-1 shrink-0" />
+                <span className="text-sm">Via dell'Industria 42, 74014 Laterza (TA), Puglia</span>
+              </li>
+              <li>
+                <a href="tel:+390999821234" className="flex items-center gap-3 text-dark-300 hover:text-primary-400 transition-colors">
+                  <Phone className="w-4 h-4 text-primary-500 shrink-0" />
+                  <span className="text-sm">+39 099 982 1234</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@metalfrigo.it" className="flex items-center gap-3 text-dark-300 hover:text-primary-400 transition-colors">
+                  <Mail className="w-4 h-4 text-primary-500 shrink-0" />
+                  <span className="text-sm">info@metalfrigo.it</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-dark-400 text-sm">
+            © {new Date().getFullYear()} Metalfrigo S.r.l. — Tutti i diritti riservati.
+          </p>
+          <div className="flex gap-6">
+            <a href="#" className="text-dark-400 hover:text-dark-200 text-sm transition-colors">Privacy Policy</a>
+            <a href="#" className="text-dark-400 hover:text-dark-200 text-sm transition-colors">Cookie Policy</a>
+            <a href="#" className="text-dark-400 hover:text-dark-200 text-sm transition-colors">P.IVA 12345678901</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
