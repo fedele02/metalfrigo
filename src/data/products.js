@@ -13,7 +13,7 @@ export const products = [
       gas: "R290 Eco-Friendly"
     },
     price: "Contattaci per preventivo",
-    image: "/armadio-700.png",
+    image: "armadio-700.png",
     badge: "Top Seller"
   },
   {
@@ -30,7 +30,7 @@ export const products = [
       illuminazione: "LED Rosa Meat-Specific"
     },
     price: "Configurazione Premium",
-    image: "/frollatura-maturatore.png",
+    image: "frollatura-maturatore.png",
     badge: "Specialistico"
   },
   {
@@ -47,7 +47,7 @@ export const products = [
       isolamento: "60mm Poliuretano"
     },
     price: "In Offerta",
-    image: "/tavolo-pizza.png",
+    image: "tavolo-pizza.png",
     badge: "Essenziale"
   },
   {
@@ -64,7 +64,7 @@ export const products = [
       connettività: "Wi-Fi Ready"
     },
     price: "Alta Efficienza",
-    image: "/abbattitore.png",
+    image: "abbattitore.png",
     badge: "Performance"
   },
   {
@@ -81,7 +81,7 @@ export const products = [
       motore: "Plug & Play"
     },
     price: "In Finanziamento",
-    image: "/cella-walkin.png",
+    image: "cella-walkin.png",
     badge: "Personalizzabile"
   },
   {
@@ -98,7 +98,7 @@ export const products = [
       materiale: "AISI 304"
     },
     price: "Consigliato",
-    image: "/armadio-700.png",
+    image: "armadio-700.png",
     badge: "Bassa Temp"
   },
   {
@@ -115,7 +115,7 @@ export const products = [
       colore: "Custom RAL / Inox"
     },
     price: "Artigianale",
-    image: "/banco-deliz.png",
+    image: "banco-deliz.png",
     badge: "Design"
   },
   {
@@ -132,7 +132,7 @@ export const products = [
       ripiani: "Griglie Regolabili"
     },
     price: "Best Buy",
-    image: "/armadio-700.png",
+    image: "armadio-700.png",
     badge: "Bar & Pub"
   },
   {
@@ -149,7 +149,7 @@ export const products = [
       sicurezza: "HACCP Certified"
     },
     price: "Tecnico",
-    image: "/armadio-700.png",
+    image: "armadio-700.png",
     badge: "Special Mare"
   },
   {
@@ -166,7 +166,7 @@ export const products = [
       classe: "Energetica A"
     },
     price: "Promozione",
-    image: "/abbattitore.png",
+    image: "abbattitore.png",
     badge: "Grande Distribuzione"
   }
 ];

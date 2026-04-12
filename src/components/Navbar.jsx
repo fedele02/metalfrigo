@@ -41,7 +41,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img 
-              src="/logo.png" 
+              src="./logo.png" 
               alt="Metalfrigo" 
               className="h-7 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
             />

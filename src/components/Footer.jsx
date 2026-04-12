@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center group mb-5">
               <img 
-                src="/logo.png" 
+                src="./logo.png" 
                 alt="Metalfrigo" 
                 className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
               />
