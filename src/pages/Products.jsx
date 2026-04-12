@@ -167,15 +167,13 @@ function ProductCard({ product, index, onSelect }) {
 
           {/* Quick specs on hover */}
           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300">
-            <div className="flex gap-2">
-              <span className="px-2.5 py-1 rounded-md bg-dark-950/80 backdrop-blur-sm text-primary-400 text-xs font-medium flex items-center gap-1">
-                <Thermometer className="w-3 h-3" />
-                {product.specs.temperatura}
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-dark-950/80 backdrop-blur-sm text-green-400 text-xs font-medium flex items-center gap-1">
-                <Zap className="w-3 h-3" />
-                {product.specs.consumo}
-              </span>
+            <div className="flex flex-wrap gap-2">
+              {Object.entries(product.specs).slice(0, 2).map(([key, value]) => (
+                <span key={key} className="px-2.5 py-1 rounded-md bg-dark-950/80 backdrop-blur-sm text-primary-400 text-[10px] font-medium flex items-center gap-1">
+                  {key.includes('temp') ? <Thermometer className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
+                  {value}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -200,17 +198,7 @@ function ProductCard({ product, index, onSelect }) {
             {product.description}
           </p>
 
-          <div className="flex items-center justify-between">
-            <div className="flex gap-4 text-xs text-dark-400">
-              <span className="flex items-center gap-1">
-                <Ruler className="w-3.5 h-3.5" />
-                {product.specs.capacita}
-              </span>
-              <span className="flex items-center gap-1">
-                <Award className="w-3.5 h-3.5" />
-                {product.specs.classe}
-              </span>
-            </div>
+          <div className="flex items-center justify-end">
             <span className="text-primary-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
               Dettagli
               <ArrowRight className="w-4 h-4" />
@@ -285,20 +273,12 @@ function ProductModal({ product, onClose }) {
               Specifiche Tecniche
             </h3>
             <div className="grid grid-cols-2 gap-3 mb-8">
-              {[
-                { label: 'Capacità', value: product.specs.capacita, icon: Ruler },
-                { label: 'Temperatura', value: product.specs.temperatura, icon: Thermometer },
-                { label: 'Consumo', value: product.specs.consumo, icon: Zap },
-                { label: 'Dimensioni', value: product.specs.dimensioni, icon: Ruler },
-                { label: 'Peso', value: product.specs.peso, icon: Weight },
-                { label: 'Efficienza', value: product.specs.classe, icon: Award },
-              ].map((spec, i) => (
+              {Object.entries(product.specs).map(([key, value], i) => (
                 <div key={i} className="p-3 rounded-xl bg-dark-800/50 border border-white/5">
                   <div className="flex items-center gap-2 mb-1">
-                    <spec.icon className="w-3.5 h-3.5 text-primary-400" />
-                    <span className="text-dark-400 text-xs">{spec.label}</span>
+                    <span className="text-dark-400 text-[10px] uppercase font-bold tracking-tight">{key}</span>
                   </div>
-                  <p className="text-white text-sm font-medium">{spec.value}</p>
+                  <p className="text-white text-sm font-medium">{value}</p>
                 </div>
               ))}
             </div>

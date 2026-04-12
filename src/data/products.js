@@ -1,172 +1,172 @@
 export const products = [
   {
     id: 1,
-    name: "ArcticPro 700",
+    name: "ArcticPro 700 TN",
     category: "Armadi Refrigerati",
-    description: "Armadio refrigerato professionale a doppia porta in acciaio inox AISI 304. Ideale per ristoranti e hotel di alto livello. Sistema di refrigerazione ventilata con sbrinamento automatico.",
+    description: "Armadio refrigerato professionale monoscocca in acciaio inox AISI 304. Sistema di refrigerazione ventilata tropicalizzata (fino a +43°C) con sbrinamento automatico a gas caldo. Angoli interni arrotondati per massima igiene.",
     specs: {
       capacita: "700 L",
       temperatura: "-2°C / +8°C",
-      consumo: "3.2 kWh/24h",
-      dimensioni: "1400 x 800 x 2100 mm",
-      peso: "145 kg",
-      classe: "Classe A++"
+      consumo: "2.8 kWh/24h",
+      dimensioni: "700 x 830 x 2050 mm",
+      allestimento: "3 griglie GN 2/1",
+      gas: "R290 Eco-Friendly"
     },
-    price: "€ 4.890",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop",
-    badge: "Bestseller"
+    price: "Contattaci per preventivo",
+    image: "/armadio-700.png",
+    badge: "Top Seller"
   },
   {
     id: 2,
-    name: "FrostLine 1400",
-    category: "Celle Frigorifere",
-    description: "Cella frigorifera modulare walk-in per la conservazione di grandi quantità. Pannelli isolanti in poliuretano espanso ad alta densità. Sistema di monitoraggio temperatura digitale.",
+    name: "MeatMaster Dry-Age 500",
+    category: "Maturatori Carne",
+    description: "Vetrina professionale per frollatura a secco (dry aging). Controllo elettronico attivo di temperatura e umidità (60-90%) senza necessità di allaccio idrico. Sistema di sanificazione UV-C integrato per abbattimento carica batterica.",
     specs: {
-      capacita: "1400 L",
-      temperatura: "-5°C / +5°C",
-      consumo: "5.8 kWh/24h",
-      dimensioni: "2000 x 1200 x 2400 mm",
-      peso: "280 kg",
-      classe: "Classe A+"
+      capacita: "500 L / 80kg carne",
+      temperatura: "0°C / +4°C",
+      umidità: "60% - 90% RH",
+      finitura: "Inox Scotch Brite",
+      tecnologia: "SmartAging® Cloud",
+      illuminazione: "LED Rosa Meat-Specific"
     },
-    price: "€ 8.750",
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop",
-    badge: "Nuovo"
+    price: "Configurazione Premium",
+    image: "/frollatura-maturatore.png",
+    badge: "Specialistico"
   },
   {
     id: 3,
-    name: "GlacierMax 500",
-    category: "Congelatori Industriali",
-    description: "Congelatore a pozzetto industriale con coperchio scorrevole in vetro temperato. Illuminazione LED interna e sistema di sbrinamento automatico No-Frost.",
+    name: "PizzaChef Granite 3P",
+    category: "Tavoli Pizza",
+    description: "Tavolo refrigerato per pizzeria con piano di lavoro in granito sardo da 30mm. Struttura interna ed esterna in acciaio AISI 304. Vano motore indipendente e vani compatibili con cassette 600x400 mm.",
     specs: {
-      capacita: "500 L",
-      temperatura: "-25°C / -18°C",
-      consumo: "4.1 kWh/24h",
-      dimensioni: "1600 x 700 x 900 mm",
-      peso: "98 kg",
-      classe: "Classe A+"
+      capacita: "Vani 600x400",
+      temperatura: "+2°C / +10°C",
+      piano: "Granito Rettificato",
+      dimensioni: "2020 x 800 x 1000 mm",
+      motore: "Tropicalizzato 43°C",
+      isolamento: "60mm Poliuretano"
     },
-    price: "€ 3.490",
-    image: "https://images.unsplash.com/photo-1631194758628-71ec7c35137e?w=600&h=400&fit=crop",
-    badge: "Popolare"
+    price: "In Offerta",
+    image: "/tavolo-pizza.png",
+    badge: "Essenziale"
   },
   {
     id: 4,
-    name: "TundraElite 900",
-    category: "Armadi Refrigerati",
-    description: "Armadio refrigerato premium a tripla porta con display digitale touch. Tecnologia inverter per risparmio energetico fino al 40%. Finiture in acciaio spazzolato.",
+    name: "ZeroPoint NX-15",
+    category: "Abbattitori",
+    description: "Abbattitore rapido di temperatura a 10 teglie GN 1/1. Cicli programmabili Hard/Soft per abbattimento (+3°C) e surgelazione rapida (-18°C). Sonda al cuore multipoint ribaltabile riscaldata.",
     specs: {
-      capacita: "900 L",
-      temperatura: "-2°C / +10°C",
-      consumo: "2.8 kWh/24h",
-      dimensioni: "1800 x 850 x 2100 mm",
-      peso: "185 kg",
-      classe: "Classe A+++"
+      resa: "+3°C (50kg) / -18°C (35kg)",
+      capacita: "10 teglie GN 1/1",
+      cicli: "Manuale / Automatico",
+      dimensioni: "800 x 830 x 1750 mm",
+      pannello: "Touch Screen 7\"",
+      connettività: "Wi-Fi Ready"
     },
-    price: "€ 6.290",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop",
-    badge: "Premium"
+    price: "Alta Efficienza",
+    image: "/abbattitore.png",
+    badge: "Performance"
   },
   {
     id: 5,
-    name: "IceBank 300",
-    category: "Banchi Refrigerati",
-    description: "Banco refrigerato per esposizione gastronomica con vetro curvo anti-appannamento. Piano di lavoro in granito nero e illuminazione LED regolabile RGB.",
+    name: "FrostVault Modular 2.0",
+    category: "Celle Frigorifere",
+    description: "Cella frigorifera modulare walk-in con pannelli a gancio rapido da 80mm. Pavimento rinforzato antiscivolo e porta con apertura di sicurezza interna. Motore monoblocco a soffitto o a parete.",
     specs: {
-      capacita: "300 L",
-      temperatura: "+2°C / +8°C",
-      consumo: "2.4 kWh/24h",
-      dimensioni: "1500 x 900 x 1300 mm",
-      peso: "120 kg",
-      classe: "Classe A++"
+      volume: "6.5 m³",
+      temperatura: "-2°C / +5°C",
+      pannelli: "Acciaio Zincopretinto",
+      dimensioni: "1500 x 2100 x 2400 mm",
+      porta: "Luce netta 800x1900",
+      motore: "Plug & Play"
     },
-    price: "€ 5.150",
-    image: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&h=400&fit=crop",
-    badge: "Design Award"
+    price: "In Finanziamento",
+    image: "/cella-walkin.png",
+    badge: "Personalizzabile"
   },
   {
     id: 6,
-    name: "PolarVault 2000",
-    category: "Celle Frigorifere",
-    description: "Cella frigorifera di grande capacità per centri logistici e distribuzione all'ingrosso. Sistema di allarme integrato e monitoraggio remoto via app.",
+    name: "GlacierMax BT-700",
+    category: "Armadi Refrigerati",
+    description: "Armadio congelatore professionale Bassa Temperatura. Ideale per la conservazione a lungo termine di materie prime. Ventilazione forzata e resistenza elettrica anticonsensa sulla cornice porta.",
     specs: {
-      capacita: "2000 L",
-      temperatura: "-30°C / +5°C",
-      consumo: "8.5 kWh/24h",
-      dimensioni: "3000 x 2000 x 2600 mm",
-      peso: "450 kg",
-      classe: "Classe A"
+      capacita: "700 L",
+      temperatura: "-18°C / -22°C",
+      sbrinamento: "Elettrico Automatico",
+      dimensioni: "700 x 830 x 2050 mm",
+      classe: "Energetica B",
+      materiale: "AISI 304"
     },
-    price: "€ 15.900",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&h=400&fit=crop",
-    badge: "Industriale"
+    price: "Consigliato",
+    image: "/armadio-700.png",
+    badge: "Bassa Temp"
   },
   {
     id: 7,
-    name: "CryoSlim 200",
-    category: "Sottobanco",
-    description: "Frigorifero sottobanco ultra-compatto per bar e cocktail bar. Design slim con porta in vetro temperato e sistema silenzioso a 38 dB.",
+    name: "Aurora Pastry Luxury",
+    category: "Vetrine Display",
+    description: "Vetrina espositiva per pasticceria e cioccolateria con vetri doppi basso-emissivi. Sistema di umidità controllata per evitare l'essiccazione dei prodotti. Design minimalista con montanti a scomparsa.",
     specs: {
-      capacita: "200 L",
-      temperatura: "+1°C / +10°C",
-      consumo: "1.2 kWh/24h",
-      dimensioni: "600 x 600 x 850 mm",
-      peso: "52 kg",
-      classe: "Classe A+++"
+      illuminazione: "LED 3000K Cri95",
+      temperatura: "+4°C / +12°C",
+      umidità: "55% - 75% regolabile",
+      dimensioni: "1500 x 850 x 1350 mm",
+      ripiani: "Vetro Cristallo 10mm",
+      colore: "Custom RAL / Inox"
     },
-    price: "€ 1.990",
-    image: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=600&h=400&fit=crop",
-    badge: "Compatto"
+    price: "Artigianale",
+    image: "/banco-deliz.png",
+    badge: "Design"
   },
   {
     id: 8,
-    name: "BlizzardPro 1200",
-    category: "Congelatori Industriali",
-    description: "Congelatore a cassetti estraibili in acciaio inox con sistema blast chiller integrato. Raffreddamento rapido in meno di 90 minuti.",
+    name: "BarLine Slim 2P",
+    category: "Sottobanco",
+    description: "Fridobar sottobanco compatto per bevande e preparazioni bar. Doppia porta in vetro intelaiata inox con chiusura automatica. Dimensioni ottimizzate per l'incasso sotto banconi standard.",
     specs: {
-      capacita: "1200 L",
-      temperatura: "-40°C / -18°C",
-      consumo: "7.2 kWh/24h",
-      dimensioni: "1800 x 900 x 2100 mm",
-      peso: "210 kg",
-      classe: "Classe A+"
+      capacita: "320 L",
+      temperatura: "+2°C / +10°C",
+      porte: "Vetro Termostampato",
+      dimensioni: "1350 x 600 x 850 mm",
+      interno: "Alluminio Goffrato",
+      ripiani: "Griglie Regolabili"
     },
-    price: "€ 9.870",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
-    badge: "Alta Potenza"
+    price: "Best Buy",
+    image: "/armadio-700.png",
+    badge: "Bar & Pub"
   },
   {
     id: 9,
-    name: "NordWave 600",
-    category: "Banchi Refrigerati",
-    description: "Banco refrigerato self-service per supermercati e catene di distribuzione. Tecnologia MultiFlow per distribuzione uniforme del freddo. Display digitale integrato.",
+    name: "OceanBlue Fish 700",
+    category: "Conservazione Pesce",
+    description: "Armadio refrigerato specifico per la conservazione del pesce fresco. Dotato di cassetti in ABS forati con sistema di drenaggio liquidi dedicato. Evaporatore trattato anti-corrosione salina.",
     specs: {
-      capacita: "600 L",
-      temperatura: "0°C / +6°C",
-      consumo: "3.9 kWh/24h",
-      dimensioni: "2500 x 1100 x 1400 mm",
-      peso: "175 kg",
-      classe: "Classe A++"
+      dotazione: "7 Cassetti Fish-Grade",
+      temperatura: "-2°C / +2°C",
+      drenaggio: "Canalizzazione Inox",
+      dimensioni: "700 x 830 x 2050 mm",
+      materiale: "AISI 316 Acid-Resistant",
+      sicurezza: "HACCP Certified"
     },
-    price: "€ 7.350",
-    image: "https://images.unsplash.com/photo-1601598851547-4302969d0614?w=600&h=400&fit=crop",
-    badge: "Retail"
+    price: "Tecnico",
+    image: "/armadio-700.png",
+    badge: "Special Mare"
   },
   {
     id: 10,
-    name: "ZeroPoint 450",
-    category: "Abbattitori",
-    description: "Abbattitore di temperatura professionale a 10 teglie GN 1/1. Ciclo di abbattimento positivo e negativo. Sonda al cuore multipoint e pannello touch.",
+    name: "Tundra Island 250",
+    category: "Espositori Gelati",
+    description: "Isola refrigerata orizzontale per surgelati e gelati con coperture in vetro scorrevole. Illuminazione perimetrale e sistema di sbrinamento rapido. Elevata visibilità del prodotto.",
     specs: {
-      capacita: "450 L",
-      temperatura: "-40°C / +3°C",
-      consumo: "4.5 kWh/24h",
-      dimensioni: "800 x 800 x 1600 mm",
-      peso: "135 kg",
-      classe: "Classe A++"
+      capacita: "680 L Lordi",
+      temperatura: "-24°C / -16°C",
+      vetri: "Basso Emissivi",
+      dimensioni: "2500 x 1000 x 900 mm",
+      sito: "Promozionale",
+      classe: "Energetica A"
     },
-    price: "€ 6.780",
-    image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&h=400&fit=crop",
-    badge: "HACCP Ready"
+    price: "Promozione",
+    image: "/abbattitore.png",
+    badge: "Grande Distribuzione"
   }
-]
+];
