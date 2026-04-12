@@ -75,12 +75,12 @@ export default function Navbar() {
 
           {/* Secondary CTA / Contact */}
           <div className="hidden md:flex items-center">
-            <a 
-              href="#contatti" 
+            <Link 
+              to="/#contatti" 
               className="px-6 py-2 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary-500/25 transition-all hover:scale-105 active:scale-95"
             >
               Contattaci
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -133,13 +133,13 @@ export default function Navbar() {
                 transition={{ delay: 0.3 }}
                 className="mt-4"
               >
-                <a 
-                  href="#contatti"
+                <Link 
+                  to="/#contatti"
                   onClick={() => setIsMobileOpen(false)}
                   className="block w-full px-6 py-5 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold text-lg shadow-lg shadow-primary-500/20"
                 >
                   Contattaci
-                </a>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

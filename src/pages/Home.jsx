@@ -137,12 +137,12 @@ function HeroSection() {
               Scopri i Prodotti
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <a
-              href="#chi-siamo"
+            <Link
+              to="/#chi-siamo"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl glass-light text-white font-semibold text-lg hover:bg-frost-200 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               Chi Siamo
-            </a>
+            </Link>
           </motion.div>
         </div>
 
