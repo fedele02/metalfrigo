@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Snowflake, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -7,20 +8,15 @@ export default function Footer() {
       {/* Gradient line at top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
       
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center group mb-5">
-              <img 
-                src="./logo.png" 
-                alt="Metalfrigo" 
-                className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
-              />
+              <Logo className="text-3xl md:text-5xl transition-transform duration-300 group-hover:scale-105" />
             </Link>
-            <p className="text-dark-300 leading-relaxed max-w-md mb-6">
-              Specialisti nella progettazione di arredamenti industriali e soluzioni di refrigerazione 
-              per il settore professionale. Qualità artigianale e innovazione tecnologica Made in Puglia.
+            <p className="text-dark-300 leading-relaxed max-w-md mb-6 text-sm font-normal">
+              Specialisti della produzione e della commercializzazione nel campo della refrigerazione di design in Italia e all'estero.
             </p>
             <div className="flex gap-3">
               {['LinkedIn', 'Facebook', 'Instagram'].map((social) => (
@@ -45,8 +41,6 @@ export default function Footer() {
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Prodotti', path: '/prodotti' },
-                { name: 'Chi Siamo', path: '/#chi-siamo' },
-                { name: 'Contatti', path: '/#contatti' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -88,11 +82,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-dark-400 text-sm">
+        <div className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+          <p className="text-dark-400 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} Metalfrigo S.r.l. — Tutti i diritti riservati.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-6">
             <a href="#" className="text-dark-400 hover:text-dark-200 text-sm transition-colors">Privacy Policy</a>
             <a href="#" className="text-dark-400 hover:text-dark-200 text-sm transition-colors">Cookie Policy</a>
             <a href="#" className="text-dark-400 hover:text-dark-200 text-sm transition-colors">P.IVA 12345678901</a>

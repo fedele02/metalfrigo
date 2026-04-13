@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -40,11 +41,7 @@ export default function Navbar() {
         >
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <img 
-              src="./logo.png" 
-              alt="Metalfrigo" 
-              className="h-7 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
-            />
+            <Logo className="text-2xl md:text-4xl transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           {/* Desktop Links */}
@@ -74,14 +71,6 @@ export default function Navbar() {
           </div>
 
           {/* Secondary CTA / Contact */}
-          <div className="hidden md:flex items-center">
-            <Link 
-              to="/#contatti" 
-              className="px-6 py-2 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary-500/25 transition-all hover:scale-105 active:scale-95"
-            >
-              Contattaci
-            </Link>
-          </div>
 
           {/* Mobile Toggle */}
           <div className="md:hidden">
@@ -127,20 +116,6 @@ export default function Navbar() {
                 </motion.div>
               ))}
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mt-4"
-              >
-                <Link 
-                  to="/#contatti"
-                  onClick={() => setIsMobileOpen(false)}
-                  className="block w-full px-6 py-5 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold text-lg shadow-lg shadow-primary-500/20"
-                >
-                  Contattaci
-                </Link>
-              </motion.div>
             </div>
           </motion.div>
         )}
