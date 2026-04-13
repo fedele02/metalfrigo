@@ -169,7 +169,6 @@ function ContactSection() {
 
   return (
     <section id="contatti" className="relative py-16 sm:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-dark-900/30" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary-500/5 rounded-full blur-[120px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -186,7 +185,7 @@ function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Contact Info Cards */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 flex flex-col gap-4 h-full">
             {[
               {
                 icon: MapPin,
@@ -207,16 +206,16 @@ function ContactSection() {
                 sub: 'Rispondiamo entro 24h',
               },
             ].map((item, i) => (
-              <AnimatedSection key={i} delay={i * 0.1}>
-                <div className="group rounded-2xl glass p-5 hover:bg-frost-200 transition-all duration-300">
+              <AnimatedSection key={i} delay={i * 0.1} className="flex-1">
+                <div className="group h-full rounded-2xl glass p-5 sm:p-6 lg:p-8 flex flex-col justify-center hover:bg-frost-200 transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 transition-colors">
-                      <item.icon className="w-5 h-5 text-primary-400" />
+                    <div className="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 transition-colors">
+                      <item.icon className="w-6 h-6 text-primary-400" />
                     </div>
                     <div>
-                      <p className="text-xs text-dark-400 uppercase tracking-wider mb-1">{item.title}</p>
-                      <p className="text-white font-medium text-sm">{item.info}</p>
-                      <p className="text-dark-300 text-xs mt-0.5">{item.sub}</p>
+                      <p className="text-sm text-dark-400 uppercase tracking-wider mb-1">{item.title}</p>
+                      <p className="text-white font-semibold text-lg sm:text-xl leading-tight">{item.info}</p>
+                      <p className="text-dark-300 text-sm mt-1">{item.sub}</p>
                     </div>
                   </div>
                 </div>

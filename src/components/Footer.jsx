@@ -18,18 +18,6 @@ export default function Footer() {
             <p className="text-dark-300 leading-relaxed max-w-md mb-6 text-sm font-normal">
               Specialisti della produzione e della commercializzazione nel campo della refrigerazione di design in Italia e all'estero.
             </p>
-            <div className="flex gap-3">
-              {['LinkedIn', 'Facebook', 'Instagram'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 rounded-xl glass-light flex items-center justify-center text-dark-300 hover:text-primary-400 hover:bg-frost-200 transition-all duration-300"
-                  aria-label={social}
-                >
-                  <span className="text-xs font-bold">{social[0]}</span>
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
