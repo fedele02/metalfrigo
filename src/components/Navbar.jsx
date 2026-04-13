@@ -32,12 +32,12 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 pointer-events-none p-4 md:p-6`}
       >
-        <div 
+        <div
           className={`w-full max-w-5xl flex items-center justify-between px-4 md:px-8 py-3 transition-all duration-500 pointer-events-auto
-          ${isScrolled 
-            ? 'glass rounded-full shadow-2xl shadow-primary-500/10 border-white/10' 
-            : 'bg-transparent border-transparent'
-          }`}
+          ${isScrolled
+              ? 'glass rounded-full shadow-2xl shadow-primary-500/10 border-white/10'
+              : 'bg-transparent border-transparent'
+            }`}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center group">
@@ -59,11 +59,10 @@ export default function Navbar() {
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-                <span className={`relative z-10 ${
-                  location.pathname === link.path
+                <span className={`relative z-10 ${location.pathname === link.path
                     ? 'text-primary-400'
                     : 'text-dark-200 group-hover:text-white'
-                }`}>
+                  }`}>
                   {link.name}
                 </span>
               </Link>
@@ -105,17 +104,16 @@ export default function Navbar() {
                 >
                   <Link
                     to={link.path}
-                    className={`block px-6 py-4 rounded-2xl text-xl font-medium transition-all ${
-                      location.pathname === link.path
+                    className={`block px-6 py-4 rounded-2xl text-xl font-medium transition-all ${location.pathname === link.path
                         ? 'bg-primary-500/10 text-primary-400 border border-primary-500/20'
                         : 'text-dark-200 hover:bg-white/5 hover:text-white'
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-              
+
             </div>
           </motion.div>
         )}

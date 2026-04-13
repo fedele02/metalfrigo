@@ -1,5 +1,25 @@
 export const products = [
   {
+    id: 11,
+    name: "LM1250-2P TN",
+    category: "Armadi Refrigerati",
+    description: "qui puoi aggiungere una descrizione",
+    specs: {
+      modello: "LM1250-2P TN",
+      dimensioni: "1250 x 705 x 2050 mm",
+      capacità: "1000 L",
+      porte: "2",
+      temperatura: "2 ~ 10°C",
+      sbrinamento: "Evaporazione automatica dell'acqua di scarico",
+      gas: "R290",
+      raffreddamento: "Sistema di raffreddamento ad aria",
+      voltaggio: "220V - 240V/50-60HZ"
+    },
+    price: "",
+    image: "lm1250-2p.png",
+    badge: "Novità"
+  },
+  {
     id: 1,
     name: "ArcticPro 700 TN",
     category: "Armadi Refrigerati",
@@ -168,5 +188,5 @@ export const products = [
     price: "Promozione",
     image: "abbattitore.png",
     badge: "Grande Distribuzione"
-  }
+  },
 ];
