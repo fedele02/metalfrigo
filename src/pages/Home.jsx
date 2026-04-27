@@ -1,49 +1,84 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
-  MapPin, Phone, Mail, Clock, Send, Award, ShieldCheck, Layout,
-  ChevronRight, ArrowRight
+  Award, ShieldCheck, Layout, ArrowRight,
+  Phone, Mail, MapPin, Clock, Send
 } from 'lucide-react'
 import AnimatedSection from '../components/AnimatedSection'
 
 export default function Home() {
+  // Ensure we start at the top on every refresh
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
-    <main>
+    <main className="bg-dark-950">
       <HeroSection />
       <AboutSection />
       <ContactSection />
     </main>
   )
 }
+
 /* ============================================
    HERO SECTION
 ============================================ */
 function HeroSection() {
   const ref = useRef(null)
+  const { scrollY } = useScroll()
+  const yImage = useTransform(scrollY, [0, 500], [0, 100])
+
   return (
-    <section ref={ref} className="relative min-h-[100dvh] flex flex-col items-center justify-center w-full max-w-[100vw] overflow-hidden">
-      <div className="absolute inset-0 bg-dark-950 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-40" />
-        <div
-          className="absolute -inset-[10px] opacity-[0.4] pointer-events-none filter blur-[15px] mix-blend-screen
-          [--aurora:repeating-linear-gradient(100deg,#0f172a_10%,#1e293b_15%,#334155_20%,#0ea5e9_25%,#020617_30%)]
-          [background-image:var(--aurora)]
-          [background-size:300%,_200%]
-          [background-position:50%_50%,50%_50%]
-          after:content-[''] after:absolute after:inset-0 after:[background-image:var(--aurora)] 
-          after:[background-size:200%,_100%] 
-          after:animate-aurora after:[background-attachment:fixed]"
-        ></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark-950 to-transparent z-10" />
+    <section ref={ref} className="relative min-h-[100dvh] flex items-center w-full overflow-hidden bg-dark-950">
+      {/* Dynamic Background Image - De-zoomed & Blended */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+
+        {/* Parallax Image Layer */}
+        <motion.div
+          style={{ y: yImage }}
+          className="absolute right-0 top-0 w-full h-full opacity-50 lg:opacity-90"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}frighi-home.jpg`}
+            alt="Showroom Metalfrigo"
+            className="w-full h-full object-cover object-center lg:object-right scale-100"
+          />
+
+          {/* Advanced Blending Masks - Softened for better visibility */}
+          {/* Desktop Left-to-Right Fade: Now softer and starts further left */}
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-950 via-dark-950/30 to-transparent hidden lg:block" />
+
+          {/* Mobile Top-to-Bottom Fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-950/40 to-dark-950/20 block lg:hidden" />
+
+          {/* General vignetting */}
+          <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-dark-950/20" />
+        </motion.div>
+
+        {/* Global atmospheric details */}
+        <div className="absolute inset-0 bg-grid opacity-[0.03]" />
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-[120px]" />
       </div>
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pt-32 pb-20">
+
+      {/* Content Overlay */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pt-20">
         <div className="max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-primary-400 text-[10px] font-bold uppercase tracking-[0.2em]">
+              Eccellenza nella Refrigerazione
+            </span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold font-heading leading-[0.95] tracking-tight mb-8"
+            className="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold font-heading leading-[0.9] tracking-tighter mb-8"
           >
             <span className="text-white">Soluzioni di</span>
             <br />
@@ -51,27 +86,32 @@ function HeroSection() {
             <br />
             <span className="text-white">Industriale</span>
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-lg sm:text-xl text-dark-300 max-w-2xl leading-relaxed mb-10 font-normal tracking-wide"
+            transition={{ delay: 0.1 }}
+            className="text-lg sm:text-xl text-dark-200 max-w-xl leading-relaxed mb-12 font-normal tracking-wide"
           >
-            Siamo specializzati nella refrigerazione industriale di design all'avanguardia, unendo tecnologia e sostenibilità.
+            Siamo specializzati nella refrigerazione industriale di design all'avanguardia, unendo tecnologia estrema e sostenibilità.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
           >
             <Link
               to="/prodotti"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold text-lg hover:from-primary-400 hover:to-primary-500 transition-all duration-300 hover:scale-[1.02]"
+              className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-white text-dark-950 font-bold text-lg hover:bg-primary-400 hover:text-white transition-all duration-500 overflow-hidden shadow-xl"
             >
-              Scopri i Prodotti
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <span className="relative z-10">Scopri i Prodotti</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
       </div>
+
     </section>
   )
 }
@@ -99,39 +139,64 @@ function AboutSection() {
   ]
 
   return (
-    <section id="chi-siamo" className="relative pt-28 sm:pt-40 pb-16 sm:pb-28 overflow-hidden">
+    <section id="chi-siamo" className="relative pt-24 sm:pt-40 pb-20 sm:pb-32 overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-700/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-700/[0.03] rounded-full blur-[100px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-        <AnimatedSection className="text-center mb-10 sm:mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light text-primary-400 text-xs font-semibold uppercase tracking-widest mb-4">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Centered Heading at Top */}
+        <AnimatedSection className="text-center mb-16 sm:mb-24">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light text-primary-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
             Chi Siamo
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mt-4 max-w-2xl mx-auto leading-tight">
-            Valori e Visione della Refrigerazione Professionale
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-white leading-[1.1] max-w-4xl mx-auto">
+            L'eccellenza nella <br />
+            <span className="gradient-text">Refrigerazione Professionale</span>
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {points.map((point, i) => (
-            <AnimatedSection key={i} delay={i * 0.15}>
-              <div className="h-full group p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass hover:bg-frost-200 transition-all duration-500 border border-white/5 hover:border-primary-500/20 hover:scale-[1.02]">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary-500/10 flex items-center justify-center mb-5 sm:mb-8 group-hover:bg-primary-500/20 transition-colors">
-                  <point.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary-400" />
+        {/* 2-Column Content Below */}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+          {/* Left Column: Text (Second on mobile, First on desktop) */}
+          <div className="w-full lg:w-[42%] order-2 lg:order-1 space-y-8 sm:space-y-12 pr-0 lg:pr-8">
+            {points.map((point, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className="flex items-start gap-4 sm:gap-6 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center shrink-0">
+                    <point.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors tracking-tight">
+                      {point.title}
+                    </h3>
+                    <p className="text-dark-400 text-sm sm:text-[15px] leading-relaxed font-normal">
+                      {point.text}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 group-hover:text-primary-400 transition-colors">
-                  {point.title}
-                </h3>
-                <p className="text-dark-300 leading-relaxed font-normal">
-                  {point.text}
-                </p>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {/* Right Column: Image (First on mobile, Second on desktop) */}
+          <div className="w-full lg:w-[58%] order-1 lg:order-2">
+            <AnimatedSection delay={0.3}>
+              <div className="relative aspect-[16/10] sm:aspect-[1.5/1] lg:aspect-[1.4/1] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/60 group">
+                <img
+                  src={`${import.meta.env.BASE_URL}chi-siamo.jpg`}
+                  alt="L'eccellenza Metalfrigo"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] border border-white/5 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-dark-950/20 to-transparent pointer-events-none opacity-40" />
               </div>
             </AnimatedSection>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
