@@ -41,7 +41,7 @@ export default function Navbar() {
         >
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <Logo className="text-2xl md:text-4xl transition-transform duration-300 group-hover:scale-105" />
+            <Logo className="h-8 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           {/* Desktop Links */}

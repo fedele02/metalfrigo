@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center group mb-5">
-              <Logo className="text-3xl md:text-5xl transition-transform duration-300 group-hover:scale-105" />
+              <Logo className="h-10 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <p className="text-dark-300 leading-relaxed max-w-md mb-6 text-sm font-normal">
               Specialisti della produzione e della commercializzazione nel campo della refrigerazione di design in Italia e all'estero.
