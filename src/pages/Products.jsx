@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import {
   Search, X, Thermometer, Zap,
@@ -14,7 +14,7 @@ export default function Products() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('Tutti')
   const [isCategoryOpen, setIsCategoryOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState(null)
+  const navigate = useNavigate()
 
   const filtered = products.filter(p => {
     const matchCategory = category === 'Tutti' || p.category === category
@@ -23,18 +23,8 @@ export default function Products() {
     return matchCategory && matchSearch
   })
 
-  // Lock body scroll when modal is open
-  useEffect(() => {
-    if (selectedProduct) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
-  }, [selectedProduct])
-
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-dark-950 text-white">
       {/* Hero & Filters */}
       <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16">
         <div className="absolute inset-0 pointer-events-none">
@@ -135,7 +125,7 @@ export default function Products() {
                   key={product.id}
                   product={product}
                   index={i}
-                  onSelect={() => setSelectedProduct(product)}
+                  onSelect={() => navigate(`/prodotti/${product.id}`)}
                 />
               ))}
             </AnimatePresence>
@@ -150,16 +140,6 @@ export default function Products() {
           )}
         </div>
       </section>
-
-      {/* Product Modal */}
-      <AnimatePresence>
-        {selectedProduct && (
-          <ProductModal
-            product={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
-          />
-        )}
-      </AnimatePresence>
     </main>
   )
 }
@@ -250,194 +230,5 @@ function ProductCard({ product, index, onSelect }) {
         </div>
       </div>
     </motion.div>
-  )
-}
-
-/* ============================================
-   PRODUCT MODAL
-============================================ */
-function ProductModal({ product, onClose }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-dark-950/80 backdrop-blur-md"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 60 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        onClick={(e) => e.stopPropagation()}
-        className="relative w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[90vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl glass shadow-2xl"
-      >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-dark-800/80 backdrop-blur-sm flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all"
-        >
-          <X className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-
-        {/* Mobile drag handle */}
-        <div className="flex justify-center pt-3 sm:hidden">
-          <div className="w-10 h-1 rounded-full bg-white/20" />
-        </div>
-
-        <div className="flex flex-col sm:grid sm:grid-cols-2">
-          {/* Image */}
-          <div className="relative aspect-square sm:aspect-auto bg-white/5 flex items-center justify-center overflow-hidden min-h-[300px] sm:min-h-[600px] cursor-zoom-in">
-            <ZoomableImage src={product.image} alt={product.name} />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-950/20 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute top-4 left-4 pointer-events-none">
-              <span className="px-3 py-1.5 rounded-lg bg-primary-500/90 backdrop-blur-sm text-white text-xs font-semibold">
-                {product.badge}
-              </span>
-            </div>
-            {/* Zoom hint */}
-            <div className="absolute bottom-4 right-4 bg-dark-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 pointer-events-none opacity-0 sm:group-hover/image:opacity-100 transition-opacity">
-              <p className="text-[10px] text-white/70 font-medium">Click per zoom</p>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="p-5 sm:p-8">
-            <p className="text-primary-400/70 text-[10px] sm:text-xs font-medium uppercase tracking-wider mb-1 sm:mb-2">
-              {product.category}
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white mb-1 sm:mb-2">
-              {product.name}
-            </h2>
-            <p className="text-2xl sm:text-3xl font-bold gradient-text mb-4 sm:mb-6">{product.price}</p>
-
-            <p className="text-dark-200 leading-relaxed mb-6 sm:mb-8 text-sm">
-              {product.description}
-            </p>
-
-            {/* Technical Spec Sheet */}
-            <div className="mb-8">
-              <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
-                Scheda Tecnica
-              </h3>
-              <div className="rounded-2xl border border-white/5 overflow-hidden bg-dark-900/20 backdrop-blur-sm">
-                {Object.entries(product.specs).map(([key, value], i) => (
-                  <div 
-                    key={i} 
-                    className={`flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 p-3.5 sm:px-5 sm:py-4 transition-colors hover:bg-white/[0.02] ${
-                      i !== Object.entries(product.specs).length - 1 ? 'border-b border-white/5' : ''
-                    }`}
-                  >
-                    <span className="text-[10px] sm:text-xs text-dark-400 uppercase font-bold tracking-widest shrink-0">
-                      {key}
-                    </span>
-                    <span className="text-xs sm:text-sm text-white font-medium sm:text-right leading-relaxed">
-                      {value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <Link
-              to="/#contatti"
-              className="w-full inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold text-sm sm:text-base hover:from-primary-400 hover:to-primary-500 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25 active:scale-[0.98]"
-              onClick={onClose}
-            >
-              Richiedi Preventivo
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Link>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
-
-/* ============================================
-   ZOOMABLE IMAGE
-============================================ */
-function ZoomableImage({ src, alt }) {
-  const [isZoomed, setIsZoomed] = useState(false)
-  const containerRef = useRef(null)
-  const imageRef = useRef(null)
-  const [constraints, setConstraints] = useState({ left: 0, right: 0, top: 0, bottom: 0 })
-
-  const updateConstraints = () => {
-    if (containerRef.current && imageRef.current) {
-      const container = containerRef.current.getBoundingClientRect()
-      const img = imageRef.current
-      
-      // Calculate the actual rendered dimensions of the image inside object-contain
-      const containerRatio = container.width / container.height
-      const imageRatio = img.naturalWidth / img.naturalHeight
-      
-      let renderedWidth, renderedHeight
-      if (imageRatio > containerRatio) {
-        renderedWidth = container.width
-        renderedHeight = container.width / imageRatio
-      } else {
-        renderedHeight = container.height
-        renderedWidth = container.height * imageRatio
-      }
-
-      const scale = 2.5
-      const dragX = Math.max(0, (renderedWidth * scale - container.width) / 2)
-      const dragY = Math.max(0, (renderedHeight * scale - container.height) / 2)
-
-      setConstraints({
-        left: -dragX,
-        right: dragX,
-        top: -dragY,
-        bottom: dragY
-      })
-    }
-  }
-
-  useEffect(() => {
-    updateConstraints()
-    window.addEventListener('resize', updateConstraints)
-    return () => window.removeEventListener('resize', updateConstraints)
-  }, [isZoomed])
-
-  return (
-    <div 
-      ref={containerRef}
-      className={`relative w-full h-full flex items-center justify-center overflow-hidden group/image ${
-        isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'
-      }`}
-    >
-      <motion.img
-        ref={imageRef}
-        src={src}
-        alt={alt}
-        onLoad={updateConstraints}
-        onTap={() => setIsZoomed(!isZoomed)}
-        animate={{ 
-          scale: isZoomed ? 2.5 : 1,
-          x: isZoomed ? undefined : 0,
-          y: isZoomed ? undefined : 0
-        }}
-        drag={isZoomed}
-        dragConstraints={constraints}
-        dragElastic={0.1}
-        dragMomentum={true}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="w-full h-full object-contain p-4 sm:p-12 select-none pointer-events-auto"
-      />
-      
-      {/* Zoom/Drag indicator */}
-      <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 bg-dark-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 transition-all duration-300 pointer-events-none ${
-        isZoomed ? 'opacity-100' : 'opacity-0'
-      }`}>
-        <p className="text-[10px] text-white font-medium uppercase tracking-widest flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-          Trascina per esplorare
-        </p>
-      </div>
-    </div>
   )
 }
